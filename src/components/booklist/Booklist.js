@@ -26,7 +26,7 @@ function Booklist() {
     }, []);
 
     return(
-        <Box mt={4} mb={4}>
+        <Box mt={4} mb={2}>
             <SimpleGrid
                 minChildWidth="300px"
                 align="center"

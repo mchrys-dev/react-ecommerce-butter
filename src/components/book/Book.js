@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
 
-function Book(props) {
+function Book({product}) {
     return(
         <Box
             bg="white"
@@ -16,13 +16,13 @@ function Book(props) {
             rounded="lg"
             shadow="lg"
             _hover={{ shadow: "dark-lg" }}
-            key={props.product.id}
+            key={product.id}
         >
                 <Image
                     h="350px"
                     fit="cover"
-                    src={props.product.image}
-                    alt={`Picture of ${props.product.name}`}
+                    src={product.image}
+                    alt={`Picture of ${product.name}`}
                     roundedTop="lg"
                 />
 
@@ -41,7 +41,7 @@ function Book(props) {
                             lineHeight="tight"
                             fontFamily="Roboto"
                         >
-                            {props.product.title}
+                            {product.title}
                         </Text>
                         <Text
                             as="h4"
@@ -49,7 +49,7 @@ function Book(props) {
                             fontWeight="bold"
                             color="teal.600"
                         >
-                            {props.product.price} €
+                            {product.price} €
                         </Text>
                     </Flex>
 
@@ -70,12 +70,12 @@ function Book(props) {
                         variant="outline"
                         alignSelf={"center"}
                         className="snipcart-add-item"
-                        data-item-id={props.product.id}
-                        data-item-image={props.product.image}
-                        data-item-name={props.product.title}
+                        data-item-id={product.id}
+                        data-item-image={product.image}
+                        data-item-name={product.title}
                         data-item-url="/"
-                        data-item-description={props.product.description}
-                        data-item-price={props.product.price}
+                        data-item-description={product.description}
+                        data-item-price={product.price}
                     >
                     Ajouter au panier
                     </Button>
