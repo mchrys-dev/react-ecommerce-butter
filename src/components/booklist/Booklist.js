@@ -1,19 +1,21 @@
 import {
-    Text,
     Box,
-    Image,
-    Button,
     SimpleGrid,
-    Flex,
 } from "@chakra-ui/react";
-import { FiShoppingCart } from "react-icons/fi";
+ 
 import { useState, useEffect } from "react";
 import Butter from "buttercms";
+
+import Book from "../book/Book";
 
 const butter = Butter('3d160123076f791611fdc7b55e32e5f9f4ea9f8a');
 
 function Booklist() {
     const [products, setProducts] = useState([]);
+    const testObj = {
+        id: 1,
+        name: 'livre'
+    };
 
     useEffect(() => {
         async function fetchData() {
@@ -30,86 +32,20 @@ function Booklist() {
     return(
         <Box mt={4} mb={4}>
             <SimpleGrid
-            minChildWidth="300px"
-            align="center"
-            justify="center"
-            spacing="40px"
-            mb={32}
+                minChildWidth="300px"
+                align="center"
+                justify="center"
+                spacing="40px"
+                mb={32}
             >
+
             {products.map((product) => (
-                <Box
-                bg="white"
-                maxW="sm"
-                borderWidth="1px"
-                rounded="lg"
-                shadow="lg"
-                _hover={{ shadow: "dark-lg" }}
-                key={product.id}
-                >
-                <Image
-                    h="350px"
-                    fit="cover"
-                    src={product.image}
-                    alt={`Picture of ${product.name}`}
-                    roundedTop="lg"
+                <Book 
+                    key={product.id}
+                    product={product} 
                 />
-
-                <Box p="6">
-                    <Flex
-                    mt="1"
-                    flexDirection="column"
-                    justifyContent="space-between"
-                    alignContent="center"
-                    >
-                    <Text
-                        fontSize="2xl"
-                        fontWeight="semibold"
-                        as="h4"
-                        textTransform="uppercase"
-                        lineHeight="tight"
-                        fontFamily="Roboto"
-                    >
-                        {product.title}
-                    </Text>
-                    <Text
-                        as="h4"
-                        fontSize="2xl"
-                        fontWeight="bold"
-                        color="teal.600"
-                    >
-                        {product.price} €
-                    </Text>
-                    </Flex>
-
-                    {/* <Text
-                    mt={2}
-                    color="gray.500"
-                    display={{ base: "none", md: "flex" }}
-                    >
-                    {product.description}
-                    </Text> */}
-
-                    <Button
-                    leftIcon={<FiShoppingCart size="24px" />}
-                    size="lg"
-                    mt={4}
-                    isFullWidth
-                    colorScheme="blue"
-                    variant="outline"
-                    alignSelf={"center"}
-                    className="snipcart-add-item"
-                    data-item-id={product.id}
-                    data-item-image={product.image}
-                    data-item-name={product.title}
-                    data-item-url="/"
-                    data-item-description={product.description}
-                    data-item-price={product.price}
-                    >
-                    Ajouter au panier
-                    </Button>
-                </Box>
-                </Box>
             ))}
+            
             </SimpleGrid>
         </Box>
     );
