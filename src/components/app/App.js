@@ -12,6 +12,8 @@ import { FiShoppingCart, FiShoppingBag } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import Butter from "buttercms";
 
+import Header from "../header/Header";
+
 const butter = Butter('3d160123076f791611fdc7b55e32e5f9f4ea9f8a');
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
 
   return (
     <Container maxW="container.xl" h="100vh" >
+      <Header />
       <Flex justifyContent="space-between" alignContent="center">
         <Text
           as="a"
