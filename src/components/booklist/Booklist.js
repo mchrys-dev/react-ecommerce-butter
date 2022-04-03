@@ -12,10 +12,6 @@ const butter = Butter('3d160123076f791611fdc7b55e32e5f9f4ea9f8a');
 
 function Booklist() {
     const [products, setProducts] = useState([]);
-    const testObj = {
-        id: 1,
-        name: 'livre'
-    };
 
     useEffect(() => {
         async function fetchData() {
